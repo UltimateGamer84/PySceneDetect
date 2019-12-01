@@ -503,6 +503,11 @@ def detect_threshold_command(ctx, threshold, min_scene_len, fade_bias, add_last_
         threshold=threshold, min_scene_len=min_scene_len, fade_bias=fade_bias,
         add_final_scene=add_last_scene, min_percent=min_percent, block_size=block_size))
 
+@click.command('detect-poly')
+@click.pass_context
+def detect_poly_command(ctx):
+    """Hello World"""
+    ctx.obj.add_detector(scenedetect.detectors.PolyDetector())
 
 @click.command('export-html', add_help_option=False)
 @click.option(
@@ -752,6 +757,7 @@ add_cli_command(scenedetect_cli, time_command)
 add_cli_command(scenedetect_cli, detect_content_command)
 add_cli_command(scenedetect_cli, detect_threshold_command)
 add_cli_command(scenedetect_cli, list_scenes_command)
+add_cli_command(scenedetect_cli, detect_poly_command)
 
 add_cli_command(scenedetect_cli, save_images_command)
 add_cli_command(scenedetect_cli, split_video_command)
